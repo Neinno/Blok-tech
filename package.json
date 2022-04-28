@@ -7,14 +7,28 @@
     "dev": "nodemon server.js",
     "precompress": "{{ executes BEFORE the `compress` script }}",
     "compress": "{{ run command to compress files }}",
-    "postcompress": "{{ executes AFTER `compress` script }}"
+    "postcompress": "{{ executes AFTER `compress` script }}",
+    "start": "node server.js"
   },
   "author": "Nigel Fijnheer",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neinno/Blok-tech.git"
+  },
+  "keywords": [
+    "Matching app",
+    "Blok tech",
+    "Javscript"
+  ],
+  "bugs": {
+    "url": "https://github.com/Neinno/Blok-tech/issues"
+  },
   "dependencies": {
     "express": "^4.17.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "homepage": "https://github.com/Neinno/Blok-tech#readme"
 }
