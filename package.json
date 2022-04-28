@@ -2,8 +2,9 @@
   "name": "matchingapp",
   "version": "1.0.0",
   "description": "Matching applicatie voor blok tech",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "precompress": "{{ executes BEFORE the `compress` script }}",
     "compress": "{{ run command to compress files }}",
     "postcompress": "{{ executes AFTER `compress` script }}"
@@ -12,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
