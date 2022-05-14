@@ -1,0 +1,21 @@
+<form action="/add" method="POST">
+    <label for="merk">Merk van de auto</label>
+    <input type="text" name="merk" id="merk" required>
+
+    <label for="type">Type auto</label>
+    <input type="text" name="type" id="type" required>
+
+    <label for="kleur">Kleur van de auto</label>
+    <input type="text" name="kleur" id="kleur" required>
+
+    <input type="submit" value="voeg toe">
+</form>
+
+<h1>Matches</h1>
+<article>
+    {{#each data}}
+        <h2>{{merk}}</h2>
+        <h2>{{type}}</h2>
+        <h2>{{kleur}}</h2>
+    {{/each}}
+</article>
