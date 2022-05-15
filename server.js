@@ -22,11 +22,15 @@ app.set("views", "./views");
 
 /* Routes */
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index');
 })
 
 app.get('/add', (req, res) => {
   res.render('add', {data: data});
+})
+
+app.get('/profile', (req, res) => {
+  res.render('profile');
 })
 
 app.post('/add', (req, res) => {

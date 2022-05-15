@@ -1,5 +1,140 @@
-*, *::after, *::before {
-    box-sizing:border-box;  
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+
+/* ALGEMEEN */
+:root {
+    --main-color:white;
+    --main-text:black;
+    --secondary-color: #FAFAFA;
+    --header-color: #F0F0F0;
+    --border-color: #E0E0E0;
+    --button-color: #3175DE;
+  }
+
+body {
+    font-family: "Roboto", sans-serif;
+    color:var(--main-text);
+}
+
+/* Header */
+header {
+    background-color:var(--header-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 50%);
+    z-index: 5;
+}
+
+header > a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width:7.5em;
+    height:3.5em;
+    text-decoration: none;
+    color:var(--main-text);
+}
+
+header nav {
+    flex-grow: 1;
+}
+
+header nav ul {    
+    list-style:none;
+    display: flex;
+    gap: 1px;
+    justify-content: end;
+}
+
+header nav li {
+    min-width: 6em;
+    position: relative;
+}
+
+header nav a {
+    background-color:var(--header-color); 
+    text-decoration:none;
+    outline:none;
+    color: var(--main-text);;
+    display: block;
+    line-height: 3.5em;
+    text-align: center;   
+}
+
+/* Add form */
+form {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+input[type=text] {
+    height: 2em;
+    border-radius: 20px;
+    margin-bottom: 2em;
+    border: 2px solid var(--border-color);
+}
+
+input[type=submit] {
+    background-color: var(--button-color);
+    border-radius: 10px;
+    border: 0;
+    padding: .7em 1em;
+    color:white;
+}
+
+form > section {
+    padding: 1em 0 0 0;
+    max-width: 25em;
+    margin: 0 auto;
+}
+
+form section > section {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0 0 0;
+}
+
+
+/* Matches */
+.match {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--werk-color);
+    padding: 2em 0 2em 0;
+}
+
+.match > h1 {
+    margin-bottom: 2em;
+}
+
+.match > article {
+    display: grid;
+    grid-gap: 1em;
+    padding: 0 1em 0 1em;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background-color: var(--header-color);
+    margin-bottom: 1em;
+}
+
+.match > article figure img {
+    width: 100%;
+    border-radius: 1em;
+}
+
+.match > article h2 {
+    margin-bottom: 1em;
+}
+
+.match > article p {
+    margin-bottom: 1em;
+}
 

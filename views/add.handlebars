@@ -1,21 +1,39 @@
+{{>header}}
+
 <form action="/add" method="POST">
-    <label for="merk">Merk van de auto</label>
-    <input type="text" name="merk" id="merk" required>
+    <section>  
+        <h1>Toevoegen</h1>
+        <h2>Voeg jouw auto toe</h2>
+        
+        <section>
+            <label for="merk">Merk van de auto</label>
+            <input type="text" name="merk" id="merk" required>
 
-    <label for="type">Type auto</label>
-    <input type="text" name="type" id="type" required>
+            <label for="type">Type auto</label>
+            <input type="text" name="type" id="type" required>
 
-    <label for="kleur">Kleur van de auto</label>
-    <input type="text" name="kleur" id="kleur" required>
+            <label for="kleur">Kleur van de auto</label>
+            <input type="text" name="kleur" id="kleur" required>
+        </section>
 
-    <input type="submit" value="voeg toe">
+        <input type="submit" value="voeg toe">
+    </section>
 </form>
 
-<h1>Matches</h1>
-<article>
-    {{#each data}}
-        <h2>{{merk}}</h2>
-        <h2>{{type}}</h2>
-        <h2>{{kleur}}</h2>
+
+
+<section class="match">
+    <h1>Matches</h1>
+
+     {{#each data}}
+    <article>
+        <img src="foo.png" alt="An image">
+        <section class="info">
+            <h2>{{merk}}</h2>
+            <p>{{type}}</p>
+            <p>{{kleur}}</p>
+        </section>
+    </article>
     {{/each}}
-</article>
+
+</section>
