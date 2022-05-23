@@ -7,6 +7,8 @@ const { ObjectId } = require ("mongodb");
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
+
+  connectDB().then(console.log("Database connection succes"));
 });
 
 
@@ -24,7 +26,7 @@ app.set("views", "./views");
 
 
 /* Routes */
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 
@@ -36,12 +38,12 @@ app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
-// app.get("/match", (req, res) => {
-//   const cars = await db.collection("cars").find({},{}).toArray();
-//   const merk = (cars.length == 0) ?"no cars found" : "cars";
+app.get("/match", async (req, res) => {
+  const cars = await db.collection("cars").find({},{}).toArray();
 
-//   res.render("cars", {merk});
-// });
+  const merk = (cars.length == 0) ? "no cars found" : "cars";
+  res.render("match", {merk, cars});
+});
 
 app.post("/add", (req, res) => {
   console.log(req.body);
@@ -69,7 +71,7 @@ async function connectDB() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  const cars = database.collection("cars");
+  // const cars = database.collection("cars");
   try { 
     await client.connect();
     db = client.db(process.env.DB_NAME);

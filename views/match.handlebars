@@ -1,0 +1,16 @@
+{{>header}}
+
+<section class="match">
+    <h1>Matches</h1>
+
+     {{#each cars}}
+    <article>
+        <img src="foo.png" alt="An image">
+        <section class="info">
+            <h2>{{merk}}</h2>
+            <p>{{type}}</p>
+        </section>
+    </article>
+    {{/each}}
+
+</section>
