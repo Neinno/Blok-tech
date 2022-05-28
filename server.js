@@ -26,44 +26,39 @@ app.set("views", "./views");
 
 
 /* Routes */
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  const cars = await db.collection("cars").find({},{}).toArray();
+
+  const merk = (cars.length == 0) ? "no cars found" : "cars";
+  res.render("index", {merk, cars});
 });
 
+
 app.get("/add", (req, res) => {
-  res.render("add", {data: data});
+  res.render("add");
 });
+
+app.post("/add", async (req, res) => {
+
+  let car = {
+    merk: req.body.merk,
+    type: req.body.type,
+    kleur: req.body.kleur,
+    locatie: req.body.locatie
+  };
+
+  await db.collection("cars").insertOne(car);
+
+  const query = {};
+  const cars = await db.collection("cars").find(query).toArray();
+  res.render("index", {cars});
+});
+
 
 app.get("/profile", (req, res) => {
   res.render("profile");
 });
 
-app.get("/match", async (req, res) => {
-  const cars = await db.collection("cars").find({},{}).toArray();
-
-  const merk = (cars.length == 0) ? "no cars found" : "cars";
-  res.render("match", {merk, cars});
-});
-
-app.post("/add", (req, res) => {
-  console.log(req.body);
-
-  data.push({
-    merk: req.body.merk,
-    type: req.body.type,
-    kleur: req.body.kleur
-  });
-
-  res.render("add", { data: data });
-});
-
-const data = [
-  {
-    merk: "audi",
-    type: "a4",
-    kleur: "zwart"
-  }
-];
 
 async function connectDB() {
   const uri = process.env.DB_URI;
@@ -71,7 +66,6 @@ async function connectDB() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  // const cars = database.collection("cars");
   try { 
     await client.connect();
     db = client.db(process.env.DB_NAME);
