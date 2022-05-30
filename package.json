@@ -11,7 +11,7 @@
     "start": "node server.js"
   },
   "author": "Nigel Fijnheer",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Neinno/Blok-tech.git"

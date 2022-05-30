@@ -30,9 +30,8 @@ app.get("/", async (req, res) => {
   const cars = await db.collection("cars").find({},{}).toArray();
 
   const merk = (cars.length == 0) ? "no cars found" : "cars";
-  res.render("index", {merk, cars});
+  res.render("index", {cars});
 });
-
 
 app.get("/add", (req, res) => {
   res.render("add");
@@ -41,6 +40,7 @@ app.get("/add", (req, res) => {
 app.post("/add", async (req, res) => {
 
   let car = {
+    kenteken: req.body.kenteken,
     merk: req.body.merk,
     type: req.body.type,
     kleur: req.body.kleur,
