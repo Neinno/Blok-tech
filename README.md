@@ -15,4 +15,18 @@ git clone https://github.com/Neinno/Blok-tech
 ```
 
 
+Then install the npm packages
+
+```
+npm install
+```
+
+
+For the database i use MongoDB. To connect your own database change the information in the EXAMPLE.env file to your own information.
+
+
+## Documentation
+Navigate to the wiki for more information about the process of this project.
+
+
 
