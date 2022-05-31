@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000; 
 const dotenv = require("dotenv").config();
+const slug = require("slug");
 const { MongoClient } = require ("mongodb");
 const { ObjectId } = require ("mongodb");
 
@@ -25,14 +26,15 @@ app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 
+/***********/
 /* Routes */
-app.get("/", async (req, res) => {
-  const cars = await db.collection("cars").find({},{}).toArray();
-
-  const merk = (cars.length == 0) ? "no cars found" : "cars";
-  res.render("index", {cars});
+/***********/
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
+
+/* Toevoegen + POST naar database */
 app.get("/add", (req, res) => {
   res.render("add");
 });
@@ -40,6 +42,7 @@ app.get("/add", (req, res) => {
 app.post("/add", async (req, res) => {
 
   let car = {
+    slug: slug(req.body.kenteken),
     kenteken: req.body.kenteken,
     merk: req.body.merk,
     type: req.body.type,
@@ -51,15 +54,29 @@ app.post("/add", async (req, res) => {
 
   const query = {};
   const cars = await db.collection("cars").find(query).toArray();
-  res.render("index", {cars});
+  res.render("profile", {cars});
 });
 
 
-app.get("/profile", (req, res) => {
-  res.render("profile");
+/* Profiel pagina, zoeken naar database */
+app.get("/profile", async (req, res) => {
+  const cars = await db.collection("cars").find({},{}).toArray();
+
+  const merk = (cars.length == 0) ? "no cars found" : "cars";
+  res.render("profile", {cars});
 });
 
 
+/* Detail pagina */
+app.get("/:carId/:slug", async (req, res) => {
+  const query = {_id: ObjectId(req.params.carId)};
+  const car = await db.collection("cars").findOne(query);
+
+  res.render("cardetail", {car});
+});
+
+
+/* Database connection */
 async function connectDB() {
   const uri = process.env.DB_URI;
   const client = new MongoClient(uri, {

@@ -35,7 +35,6 @@ const typeInput = document.querySelector("input[name='type']");
 
 kentekenInput.addEventListener("input", fetchData);
 
-// fetchData();
    
 
 // GEOLOCATION NAAR LOCATIE

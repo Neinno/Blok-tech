@@ -20,6 +20,7 @@ body {
     color:var(--main-text);
 }
 
+
 /* Header */
 header {
     background-color:var(--header-color);
@@ -35,6 +36,7 @@ header {
 header > a {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
     width:7.5em;
     height:3.5em;
@@ -136,5 +138,15 @@ form section > section {
 
 .match > article p {
     margin-bottom: 1em;
+}
+
+
+/* Detail */
+.detail {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--werk-color);
+    padding: 2em 0 2em 0;
 }
 
