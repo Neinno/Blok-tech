@@ -5,11 +5,12 @@
 
     {{#each cars}}
     <article>
+        <figure>
+            <img src="/images/car.png">
+        </figure>
         <section class="main">
             <a href="/{{_id}}/{{slug}}"><h2>{{merk}}</h2></a>
             <p>Kenteken: {{kenteken}}</p>
-        </section>
-        <section class="info">
             <p>Type: {{type}}</p>
             <p>Kleur: {{kleur}}</p>
         </section>
