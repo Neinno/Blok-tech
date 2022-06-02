@@ -85,7 +85,7 @@ input[type=text] {
     border: 2px solid var(--border-color);
 }
 
-input[type=submit] {
+input[type=submit], button {
     background-color: var(--button-color);
     border-radius: 10px;
     border: 0;
@@ -164,6 +164,12 @@ form section > section {
     margin-bottom: 2em;
 }
 
+.car-detail {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media only screen and (max-width: 630px) {
     .match > article {
         grid-template-rows: 1fr;
@@ -174,6 +180,12 @@ form section > section {
     .match > article figure img {
         width: 100%;
         margin-bottom: 1em;
+    }
+
+    .car-detail {
+        grid-gap: 0;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
     }
 }
 
