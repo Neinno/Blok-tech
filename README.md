@@ -21,6 +21,13 @@ npm install
 ```
 
 
+To start the project use:
+
+```
+node server.js
+```
+
+
 For the database i use MongoDB. To connect your own database change the information in the EXAMPLE.env file to your own information.
 
 
