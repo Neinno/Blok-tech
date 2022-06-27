@@ -14,12 +14,15 @@
             <p>Kenteken: {{car.kenteken}}</p>
             <p>Type: {{car.type}}</p>
             <p>Kleur: {{car.kleur}}</p>
+            <p id="longlatt">{{car.locatie}}</p>
+            <p id="country"></p>
         </section>
         
     </article>
 
     <section>
         <h3>Locatie:</h3>
+        <noscript><p>Turn on Javascript to see the location</p></noscript>
         <iframe src = "https://maps.google.com/maps?q={{car.locatie}}&hl=es;z=14&amp;output=embed"></iframe>
     </section>
 </section>

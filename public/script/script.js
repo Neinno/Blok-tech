@@ -1,3 +1,4 @@
+getCountry();
 // Fetch API
 async function fetchData() {
     let fetchValue = document.getElementById("kenteken").value;
@@ -51,3 +52,46 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error);
+
+
+
+// LONG LATT NAAR LAND
+function getCountry() {
+    var coords = document.getElementById("longlatt").innerHTML;
+    var coordsElement = document.getElementById("longlatt");
+    var innerCountry = document.getElementById("country");
+    var api_key = "c5cf2c0fbcda465fbcdb2e40af270147";
+    var api_url = "https://api.opencagedata.com/geocode/v1/json";
+
+    var request_url = api_url
+        + "?"
+        + "key=" + api_key
+        + "&q=" + encodeURIComponent(coords)
+        + "&pretty=1"
+        + "&no_annotations=1";
+
+
+    var request = new XMLHttpRequest();
+    request.open("GET", request_url, true);
+
+    request.onload = function() {
+        var data = JSON.parse(request.responseText);
+        if (request.status === 200){ 
+            var country = "no country returned";
+            if (data.results[0].components.country != null){
+                country = data.results[0].components.country;
+                innerCountry.innerHTML = "Locatie: " + data.results[0].components.country;
+                coordsElement.style.display = "none";
+            }
+            console.log("country: " + country);
+        } else {
+            console.log("unable to geocode! Response code: " + request.status);
+            console.log("error msg: " + data.status.message);
+        }
+    };
+
+    request.onerror = function() {
+        console.log("unable to connect to server");
+    };
+    request.send();
+} 
